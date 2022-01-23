@@ -1,27 +1,13 @@
-def pruning(col):
-    for i in range(col):
-        if BOARD[col] == BOARD[i] or abs(BOARD[col] - BOARD[i]) == int(col-i):
-            return False
-    return True
-     
-def nqueen(n):
-    global CNT
-    if n  == SIZE:
-        CNT = CNT +1
-        return True
-        
-    for i in range(SIZE):
-        BOARD[n] = i
-        if pruning(n):
-            nqueen(n+1)        
-    return True
+def farm():
+ 
+    t= sum(matrix[int(len(matrix)/2)])
+    for i in range(int(len(matrix)/2)):
+        for up in range(int(len(matrix)/2) -i, int(len(matrix)/2)+1+i, 1):            
+            t += matrix[i][up]
+            t +=matrix[-i -1][up]
+    return t
  
 for tc in range(1, int(input()) + 1):
-    global BOARD
-    global SIZE
-    global CNT
-    CNT = 0
-    SIZE = int(input())
-    BOARD = [ 0 for _ in range(SIZE) ]
-    nqueen(0)
-    print("#{} {}".format(tc, CNT))
+    size=int(input())
+    matrix= [ [ int(i) for i in str(input()) ] for _ in range(size)]
+    print("#{} {}".format(tc, farm()))
