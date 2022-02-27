@@ -7,7 +7,7 @@ def find():
             if j<ITEM[i-1][0]:
                 dp[i][j] = dp [i-1][j]
             else:
-                dp[i][j]= max(dp[i-1][j], ITEM[i-1][1] + dp[i-1][j-ITEM[i-1][0]])
+                dp[i][j]= max(dp[i-1][j], ITEM[i-1][1] + dp[i-1][j-ITEM[i-1][0]])1
 
     return dp[N][K]
 
